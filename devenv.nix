@@ -17,9 +17,9 @@
     echo hello from $GREET
   '';
 
-  scripts.watch-run = {
+  scripts.wr = {
     exec = ''
-      watchexec -w src/ -e rs 'cargo run'
+      watchexec -w src/ -r -e rs 'cargo run'
     '';
     description = "Runs cargo run on file changes.";
   };

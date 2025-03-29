@@ -2,11 +2,12 @@ use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 
 async fn health_check() -> impl Responder {
     HttpResponse::Ok().body("OK")
-}
+ }
 
 async fn hello_world() -> impl Responder {
     HttpResponse::Ok().body("Hello, world!")
 }
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
