@@ -1,19 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
+
   "packages": [
     "ripgrep@latest",
-    "rustup@latest",
     "watchexec@latest",
-    "cargo@latest"
+    "rustc@latest",
   ],
+
   "shell": {
-    "init_hook": [
-      "alias watch-run='watchexec -w src/ -e rs \\\"cargo run\\\"'"
-    ],
     "scripts": {
       "test": [
-        "echo \"Error: no test specified\" && exit 1"
+        "echo \"Error: no test specified\" && exit 1",
+      ],
+      "wr": [
+        "watchexec -w src/ -r -e rs 'cargo run'"
       ]
-    }
-  }
+    },
+  },
 }
