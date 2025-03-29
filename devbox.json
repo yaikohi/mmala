@@ -2,11 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
   "packages": [
     "ripgrep@latest",
-    "rustup@latest"
+    "rustup@latest",
+    "watchexec@latest",
+    "cargo@latest"
   ],
   "shell": {
     "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
+      "alias watch-run='watchexec -w src/ -e rs \\\"cargo run\\\"'"
     ],
     "scripts": {
       "test": [
