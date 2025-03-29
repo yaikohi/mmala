@@ -5,21 +5,24 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [ 
+    pkgs.git
+    pkgs.watchexec
+  ];
 
-  # https://devenv.sh/languages/
-  # languages.rust.enable = true;
+  languages.rust.enable = true;
+  processes.cargo-watch.exec = "cargo-watch";
 
-  # https://devenv.sh/processes/
-  # processes.cargo-watch.exec = "cargo-watch";
-
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
-
-  # https://devenv.sh/scripts/
   scripts.hello.exec = ''
     echo hello from $GREET
   '';
+
+  scripts.watch-run = {
+    exec = ''
+      watchexec -w src/ -e rs 'cargo run'
+    '';
+    description = "Runs cargo run on file changes.";
+  };
 
   enterShell = ''
     hello
