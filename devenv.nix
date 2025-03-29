@@ -8,6 +8,7 @@
   packages = [ 
     pkgs.git
     pkgs.watchexec
+    pkgs.nushell
   ];
 
   languages.rust.enable = true;
